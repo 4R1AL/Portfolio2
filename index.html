@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+    <!-- ==================== AUDIO ==================== -->
+
+    <audio id="bgMusic" autoplay loop>
+        <source src="/assets/music/background.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- ==================== HEAD ==================== -->
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Garden of Words</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="assets/styles/styles.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    </head>
+
+    <!-- ==================== BODY ==================== -->
+
+    <body>
+
+        <!-- ==================== HERO ==================== -->
+
+        <div class="heading">
+            <div class="eyebrow">
+                <div class="image-box">
+                    <img src="/assets/images/cards/headding.png" alt="">
+                </div>
+            </div>
+            <div class="recomendation">
+                 <p>Movie Recommendations<br>Stories by Agus Ardna</p>
+            </div>
+
+            <div class="movie-title">
+                <p class="kicker">Kotonoha no Niwa</p>
+                <h1>Garden of<br>Words</h1>
+            </div>
+
+            <div class="credit">
+                <p>Directed and Edited by Makoto Shinkai<br>Animated by Comix Wave Films</p>
+            </div>
+        </div>
+
+        <!-- ==================== MOVIE STNOPSIS ==================== -->
+
+        <div class="movie-synopsis">
+            <h1>Movie Synopsis</h1>
+            <div class="card-content">
+                <div class="left">
+                    <div class="border-line"></div>
+                    <h5>
+                        On a rainy morning in Tokyo, Takao
+                        Akizuki, an aspiring shoemaker,
+                        decides to skip classes to sketch
+                        designs in a beautiful garden. This
+                        is where he meets yukari yukino, a
+                        beautiful yet mysterious women,
+                        for the very first time.offering to
+                        make her new shoes, Takao
+                        continues to meet Yukari
+                        thoughtout the rainy season, and 
+                        without even realizing it, The two
+                        are able alleviate the worries 
+                        personal struggles have not
+                        dissapered completely< and as the
+                        end of the season approaches,
+                        their relationship will be put to the test.
+                    </h5>
+                    <p id="credit">Synopsis written by<br>MAL rewrite</p>
+                    <div class="border-line"></div>
+                </div>
+                <div class="right">
+                    <img src="/assets/images/cards/banner.jpeg">
+                </div>
+                
+            </div>
+            <p>Aired: May 31, 2013.<br>Genres: Drama, Romance, Silence of life.<br>Duration: 46 min.<br> Rating: PG-13</p>
+        </div>  
+
+        <!-- ==================== FOOTER ==================== -->
+
+        <div class="footing">
+            <div class="card1">
+                <span>Takao<br> Akizuki</span>
+                <img src="/assets/images/cards/Takao.jpeg" alt="">
+            </div>
+            <div class="card2">
+                <img src="/assets/images/cards/Poster.jpeg" alt="">
+            </div>
+            <div class="card3">
+                <span>Yukari<br> Yukino</span>
+                <img src="/assets/images/cards/Yukari.jpeg" alt="">
+            </div>
+        </div>   
+
+        <!-- ==================== COPY RIGHT ==================== -->
+
+        <div class="copyright">
+            <p>© 2026 Samrat Nagarkoti. All rights reserved.</p>
+
+            <p>
+                Website code and implementation © 2026 Samrat Nagarkoti.
+                Film and related materials © their respective owners.
+            </p>
+
+            <p>
+                Design recreated for educational purposes ·
+                Credit to the original designer.
+            </p>
+        </div>                 
+        
+        <!-- ==================== SCRIPT ==================== -->
+
+        <script>
+            const music = document.getElementById("bgMusic");
+
+            document.addEventListener("click", () => {
+                music.play();
+            }, { once: true });
+        </script>
+    </body>
+</html>

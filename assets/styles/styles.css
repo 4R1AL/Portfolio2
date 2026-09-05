@@ -1,0 +1,392 @@
+/* <----------Resource----------> */
+
+:root{
+    --primary-color: #2A474D;
+    --text: "PT Serif", serif;
+    --surface: #D9D9D9;
+    --secondary-text: "Roboto", sans-serif;
+    --content-max: 900px;
+
+    --primary-color: #2A474D;
+    --primary-deep: #17282B;
+    --accent-glow: #A8CDAE;
+    --surface: #D9D9D9;
+    --cream: #F2EFE7;
+    --secondary-text: "Roboto", sans-serif;
+    --display-text: "Cormorant Garamond", serif;
+    --content-max: 900px;
+}
+
+/* <----------Context----------> */
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+html, body{
+    width: 100%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #000;
+    font-family: var(--secondary-text);
+}
+img{
+    max-width: 100%;
+    display: block;
+}
+
+/* <----------Heading----------> */
+.heading{
+    position: relative;
+    width: 100%;
+    max-width: var(--content-max);
+    min-height: clamp(320px, 48vw, 460px);
+    background-color: var(--primary-color);
+    overflow: hidden;
+    color: var(--cream);
+    --heading-pad: clamp(28px, 6vw, 56px);;
+    --image-width: 66%;   /* the photo itself */
+}
+
+/* image wrapper — inset top/left, flush bottom */
+.eyebrow{
+    position: absolute;
+    top: var(--heading-pad);
+    left: var(--heading-pad);
+    bottom: 0;
+    width: var(--image-width);
+    overflow: hidden;
+    z-index: 0;
+}
+.image-box{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.image-box img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 25%;
+    transform: scale(1.15);
+}
+
+/* FADE — lives directly on .heading, not clipped by .eyebrow, so it has its own space */
+.heading::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: calc(var(--heading-pad) + var(--image-width) - var(--fade-width));
+    width: var(--fade-width);
+    background: linear-gradient(90deg, transparent, var(--primary-color));
+    z-index: 1;
+    pointer-events: none;
+}
+
+.recomendation{
+    position: absolute;
+    top: calc(var(--heading-pad) + 8px);
+    left: calc(var(--heading-pad) + 8px);
+    z-index: 2;
+    max-width: 35%;
+    font-size: clamp(11px, 1.4vw, 13px);
+    line-height: 1.5;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--cream);
+}
+
+.dots{
+    position: absolute;
+    top: calc(var(--heading-pad) + 6px);
+    right: var(--heading-pad);
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--cream);
+    box-shadow: 10px 0 var(--cream), 20px 0 var(--cream);
+    z-index: 2;
+}
+
+/* title — max-width now stops WELL before the image's right edge */
+.movie-title{
+    position: absolute;
+    right: calc(var(--heading-pad) + 20px);
+    bottom: calc(var(--heading-pad) + 70px);
+    max-width: 34%;
+    text-align: left;
+    z-index: 2;
+    color: var(--cream);
+}
+.movie-title .kicker{
+    font-family: var(--display-text);
+    font-style: italic;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-size: clamp(13px, 2vw, 16px);
+    margin-bottom: 6px;
+}
+.movie-title h1{
+    font-family: var(--display-text);
+    font-weight: 700;
+    font-size: clamp(42px, 6vw, 68px);
+    line-height: 1.05;
+    margin: 0;
+}
+
+.credit{
+    position: absolute;
+    right: calc(100% - var(--heading-pad) - var(--image-width) + 16px);
+    bottom: 20px;
+    z-index: 2;                 /* above the image (z-index: 0) and its fade */
+    text-align: right;
+    max-width: 45%;
+    font-size: clamp(11px, 1.4vw, 13px);
+    line-height: 1.6;
+    color: var(--cream);
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.55);  /* keeps it legible over the photo */
+}
+/* <----------Movie Synopsis----------> */
+
+.movie-synopsis{
+    width: 100%;
+    max-width: var(--content-max);
+    background-color: var(--surface);
+    padding: clamp(28px, 6vw, 48px) clamp(20px, 6vw, 40px) clamp(40px, 6vw, 60px);
+}
+.movie-synopsis h1{
+    font-size: clamp(28px, 6vw, 50px);
+    color: var(--primary-color);
+    font-family: var(--text);
+    text-align: center;
+    margin-bottom: 8px;
+}
+.card-content{
+    display: flex;
+    flex-direction: row;
+    gap: clamp(16px, 4vw, 32px);
+    align-items: stretch;
+    padding: 12px 0;
+}
+.left{
+    flex: 1 1 40%;
+    min-width: 0;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0;              
+    margin: 0;     
+}
+.left h5{
+    font-size: 14px;
+    letter-spacing: 0.2px;
+    font-family: var(--secondary-text);
+    font-weight: 400;
+    line-height: 1.7;
+    margin: 40px 0;
+    max-width: 85%;
+    align-self: flex-end;
+}
+#credit{
+    text-align: right;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--primary-color);
+    font-family: var(--secondary-text);
+}
+.right{
+    flex: 1 1 55%;
+    min-width: 0;
+    overflow: hidden;
+    align-items: stretch;
+}
+.right img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.border-line{
+    width: 70%;
+    height: 2px;
+    background-color: var(--primary-color);
+    margin-left:auto;
+}
+.movie-synopsis > p{
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-top: 32px;
+    text-align: center;
+    line-height: 1.4;
+    font-family: var(--secondary-text);
+}
+
+/* <----------Footing----------> */
+
+.footing{
+    width: 100%;
+    max-width: var(--content-max);
+    background: linear-gradient(
+        to top,
+        var(--primary-color) 0%,
+        var(--primary-color) 50%,
+        var(--surface) 50%,
+        var(--surface) 100%
+    );
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-content: stretch;
+    /* align-items: center; */
+    gap: clamp(16px, 4vw, 32px);
+    padding: clamp(28px, 6vw, 48px) clamp(20px, 6vw, 40px) clamp(40px, 6vw, 60px);
+}
+.footing img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.footing .card1 span{
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    width: 100%;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--surface);
+    text-align: left;
+    font-family: var(--secondary-text);
+}
+.footing .card3 span{
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    width: 100%;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--surface);
+    text-align: right;
+    font-family: var(--secondary-text);
+}
+.card1, .card3{
+    position: relative;
+}
+
+/* <----------Copy Right----------> */
+
+.copyright{
+    width: 100%;
+    max-width: var(--content-max);
+    padding: clamp(10px, 2vw, 16px) clamp(15px, 4vw, 30px);
+    background-color: var(--primary-color);
+    text-align: center;
+    padding: clamp(18px, 3vw, 28px) 20px;
+    font-family: var(--secondary-text);
+    color: #D9D6C8;
+    font-family: var(--secondary-text);
+
+}
+.copyright p {
+    margin: 4px 0;
+    font-size: clamp(10px, 1.2vw, 13px);
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+/* <----------Responsive breakpoints----------> */
+
+@media (max-width: 700px){
+    .card-content{
+        flex-direction: column;
+    }
+    .left{
+        text-align: left;
+        padding: 0;
+        order: 2;
+    }
+    #credit{
+        text-align: left;
+        padding-bottom: 20px;
+    }
+    .border-line{
+        width: 100%;
+    }
+    .right{
+        order: 1;
+        aspect-ratio: 16 / 10;
+    }
+    .footing{
+        flex-direction: column;
+        padding: clamp(28px, 6vw, 48px) clamp(20px, 6vw, 40px) clamp(40px, 6vw, 60px);
+    }
+    .heading{
+        display: flex;
+        flex-direction: column;
+        min-height: auto;   /* let content determine height, not the clamp() */
+    }
+
+    /* image becomes a normal-flow block up top, fixed aspect ratio instead of stretching */
+    .eyebrow{
+        position: relative;   /* still needed to anchor .recomendation/.dots inside it */
+        top: auto; left: auto; bottom: auto;
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        order: 1;
+    }
+
+    /* no more fade into teal beside it — there's nothing beside it now */
+    .heading::after{
+        display: none;
+    }
+
+    /* label + dots still sit on the photo — fine, plenty of room in 100% width */
+    .recomendation{
+        top: 16px;
+        left: 16px;
+        max-width: 70%;
+    }
+    .dots{
+        top: 16px;
+        right: 16px;
+    }
+
+    /* title and credit drop out of the image entirely, become normal flow below it */
+    .movie-title,
+    .credit{
+        position: static;
+        max-width: 100%;
+        text-align: left;
+        padding: 0 20px;
+        margin-top: 16px;
+    }
+    .movie-title{
+        order: 2;
+    }
+    .credit{
+        order: 3;
+        margin-top: 8px;
+        margin-bottom: 20px;
+        opacity: 0.85;
+    }
+    .movie-title h1{
+        font-size: clamp(32px, 10vw, 44px);
+    }
+}
+
+
+@media (max-width: 400px){
+    .left h5{
+        font-size: 13px;
+    }
+}
